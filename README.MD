@@ -16,6 +16,6 @@ MapStruct, Lombok, PostgreSQL, Kafka, Liquibase, Junit/Mockito, Swagger.
 
 #### @TODO
 
-1. Реализовать service-registry для регистрации сервисов приложения и gateway-service для маршрутизации приложения.
+~~1. Реализовать service-registry для регистрации сервисов приложения и gateway-service для маршрутизации приложения.~~
 2. Настроить базовое взаимодействие между r-service и s-service через kafka.
 3. Добавить авторизацию и аутентификацию пользователей приложения через auth-service (настроить фильтры для запросов в gateway-service)
