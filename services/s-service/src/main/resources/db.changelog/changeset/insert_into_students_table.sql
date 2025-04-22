@@ -1,0 +1,3 @@
+insert into students(name, surname, patronymic, faculty, grade_book_number) values('Jack', 'Doe', 'Michael', 'Engineering', '25/001');
+insert into students(name, surname, patronymic, faculty, grade_book_number) values('Emily', 'Davis', 'William', 'Devops', '25/002');
+insert into students(name, surname, patronymic, faculty, grade_book_number) values('Olivia', 'Anderson', 'James', 'Engineering', '25/003');

@@ -1,0 +1,66 @@
+server:
+  port: 0
+
+spring:
+
+#  datasource:
+#    driver-class-name: org.postgresql.Driver
+#    url: jdbc:postgresql://127.0.0.1:5432/students
+#    username: postgres
+#    password: password
+
+  liquibase:
+    change-log: db.changelog/changelogs.xml
+
+  kafka:
+    bootstrap-servers: localhost:9092,localhost:9094,localhost:9096
+
+    producer:
+      acks: all
+      delivery-timeout-ms: 20000
+      linger-ms: 0
+      request-timeout-ms: 10000
+      idempotence: true
+      max-in-flight-requests-per-connections: 5
+
+    consumer:
+      group-id: student-operations
+
+    topics:
+      get-student-by-grade-book-number-response-topic:
+        name: get-student-by-grade-book-number-response-topic
+        partitions: 3
+        replicas: 3
+
+      get-all-students-response-topic:
+        name: get-all-students-response-topic
+        partitions: 3
+        replicas: 3
+
+      get-student-by-grade-book-number-topic:
+        name: get-student-by-grade-book-number-topic
+
+      get-all-students-request-topic:
+        name: get-all-students-request-topic
+
+logging:
+  level:
+    org:
+      springframework:
+        kafka: DEBUG
+
+ws:
+  host:
+    localhost
+  port:
+    8084
+  prefix:
+    soap
+  student-endpoint:
+    StudentService
+
+s3:
+  endpoint: http://localhost:9000
+  accessKey: user
+  secretKey: password
+  bucketName: corpbucket
