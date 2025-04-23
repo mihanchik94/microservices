@@ -1,0 +1,27 @@
+server:
+  port: 0
+
+spring:
+  application:
+    name: AUTH-SERVICE
+  liquibase:
+    change-log: db.changelog/changelogs.xml
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: true
+    properties:
+      jakarta:
+        persistence:
+          sharedCache:
+            mode: UNSPECIFIED
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+
+jwt:
+  secret-key: 2a10WcFkrOKRMkWpJtJNoDY2YVAS3ExbfusfAeCbMnYZlSQomHjQQJi
