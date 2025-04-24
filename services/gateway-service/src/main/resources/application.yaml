@@ -5,6 +5,20 @@ spring:
   application:
     name: GATEWAY-SERVICE
 
+  cloud:
+    gateway:
+      routes:
+        - id: r-service
+          uri: lb://R-SERVICE
+          predicates:
+            - Path=//student**
+          filters:
+            - AuthenticationFilter
+
+        - id: auth-service
+          uri: lb://AUTH-SERVICE
+          predicates:
+            - Path=/auth/**
 
 eureka:
   client:
