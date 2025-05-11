@@ -8,12 +8,10 @@ import java.util.List;
 import jakarta.xml.bind.JAXBElement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import ru.job4j.sservice.dto.StudentDto;
 import ru.job4j.sservice.mapper.StudentMapper;
 import ru.job4j.sservice.model.Student;
 import ru.job4j.sservice.repository.StudentRepository;
-import ru.job4j.sservice.service.student.StudentService;
 
 import javax.xml.namespace.QName;
 
@@ -21,7 +19,7 @@ import javax.xml.namespace.QName;
         serviceName = "StudentService",
         portName = "StudentPort",
         targetNamespace = "http://example.com/soap/",
-        endpointInterface = "ru.job4j.sservice.service.student.StudentService")
+        endpointInterface = "ru.job4j.sservice.service.student.soap.StudentService")
 @Service
 @RequiredArgsConstructor
 public class SoapStudentServiceImpl implements StudentService {
@@ -29,7 +27,6 @@ public class SoapStudentServiceImpl implements StudentService {
     private final StudentMapper studentMapper;
 
     @Override
-    @Transactional
     public JAXBElement<List<StudentDto>> getStudents() {
         List<StudentDto> result = studentMapper.toDtoList(studentRepository.findAll());
         return (JAXBElement<List<StudentDto>>) new JAXBElement(new QName("http://example.com/soap/", "getStudents"),
@@ -37,7 +34,6 @@ public class SoapStudentServiceImpl implements StudentService {
     }
 
     @Override
-    @Transactional
     public StudentDto getStudentByGradeBookNumber(String gradeBookNumber) {
         return studentMapper.toDto(findStudentByGradeBookNumber(gradeBookNumber));
     }

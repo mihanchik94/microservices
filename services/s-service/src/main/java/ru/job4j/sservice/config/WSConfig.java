@@ -6,10 +6,12 @@ import jakarta.xml.ws.Endpoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import ru.job4j.sservice.properties.WSProperties;
 import ru.job4j.sservice.service.student.soap.SoapStudentServiceImpl;
 
 @Configuration
+@EnableTransactionManagement(proxyTargetClass = false)
 public class WSConfig {
 
     @Autowired

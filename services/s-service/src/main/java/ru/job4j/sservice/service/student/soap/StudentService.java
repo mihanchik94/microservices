@@ -1,4 +1,4 @@
-package ru.job4j.sservice.service.student;
+package ru.job4j.sservice.service.student.soap;
 
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebResult;
@@ -31,10 +31,10 @@ public interface StudentService {
 
     @WebResult(name = "return", targetNamespace = "")
     @RequestWrapper(
-            localName = "getStudents",
+            localName = "getStudentByGradeBookNumber",
             targetNamespace = "http://example.com/soap/",
             className = "ru.job4j.sservice.service.GetStudentByGradeBookNumberRequest")
-    @WebMethod(action = "urn:GetStudents")
+    @WebMethod(action = "urn:GetStudentByGradeBookNumber")
     @ResponseWrapper(
             localName = "getStudentByGradeBookNumberResponse",
             targetNamespace = "http://example.com/soap/",

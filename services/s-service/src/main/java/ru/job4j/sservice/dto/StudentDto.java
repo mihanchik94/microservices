@@ -8,7 +8,6 @@ import java.io.Serializable;
 
 @XmlRootElement
 @Builder(setterPrefix = "with")
-
 public class StudentDto implements Serializable {
     private Integer id;
     private String surname;

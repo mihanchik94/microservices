@@ -1,9 +1,18 @@
 server:
   port: 0
+  servlet:
+    context-path: /
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
 
 spring:
   application:
-    name: AUTH-SERVICE
+    name: auth-service
   liquibase:
     change-log: db.changelog/changelogs.xml
 
@@ -24,4 +33,5 @@ eureka:
 
 
 jwt:
-  secret-key: 2a10WcFkrOKRMkWpJtJNoDY2YVAS3ExbfusfAeCbMnYZlSQomHjQQJi
+  secret-key: 534f254516806a870704060e8ab1b9e48c63c5bc0af6408f47a596129162e291
+  expiration: 3600000 #60 minutes

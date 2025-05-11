@@ -1,1 +1,1 @@
-insert into users(name, password) values('user', '$2a$10$8sgNDvCAo2KclhnVq/FWIuJwWZyAMthdou4/99U9YIX/jI2PwIP6W');
+insert into users(username, password) values('user', '$2a$10$8sgNDvCAo2KclhnVq/FWIuJwWZyAMthdou4/99U9YIX/jI2PwIP6W');

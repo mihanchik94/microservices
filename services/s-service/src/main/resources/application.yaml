@@ -2,12 +2,8 @@ server:
   port: 0
 
 spring:
-
-#  datasource:
-#    driver-class-name: org.postgresql.Driver
-#    url: jdbc:postgresql://127.0.0.1:5432/students
-#    username: postgres
-#    password: password
+  main:
+    allow-circular-references: true
 
   liquibase:
     change-log: db.changelog/changelogs.xml

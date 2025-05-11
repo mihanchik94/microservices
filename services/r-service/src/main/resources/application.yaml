@@ -1,15 +1,23 @@
 server:
   port: 0
+  servlet:
+    context-path: /
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
 
 spring:
   main:
     web-application-type: reactive
   application:
-    name: R-SERVICE
+    name: r-service
 
   kafka:
     bootstrap-servers: localhost:9092,localhost:9094,localhost:9096
-
+    topics:
       get-student-by-grade-book-number-topic:
         name: get-student-by-grade-book-number-topic
         partitions: 3
@@ -61,7 +69,7 @@ scheduler:
   queued-task-cap: 100
   name: blocking
 
-#eureka:
-#  client:
-#    service-url:
-#      defaultZone: http://localhost:8761/eureka/
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
