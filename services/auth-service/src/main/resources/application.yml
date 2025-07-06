@@ -1,0 +1,41 @@
+server:
+  port: 0
+  servlet:
+    context-path: /
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+
+spring:
+  application:
+    name: auth-service
+  liquibase:
+    change-log: db.changelog/changelogs.xml
+  datasource:
+    username: postgres
+    password: password
+    url: jdbc:postgresql://localhost:5433/user-db
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: true
+    properties:
+      jakarta:
+        persistence:
+          sharedCache:
+            mode: UNSPECIFIED
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+
+jwt:
+  secret-key: 534f254516806a870704060e8ab1b9e48c63c5bc0af6408f47a596129162e291
+  expiration: 3600000 #60 minutes

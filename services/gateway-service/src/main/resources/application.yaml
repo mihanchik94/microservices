@@ -1,0 +1,52 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway-service
+
+  cloud:
+    gateway:
+      httpclient:
+      routes:
+        - id: swagger-ui
+          uri: lb://gateway-service
+          predicates:
+            - Path=/swagger-ui/**
+          filters:
+            - RewritePath=/swagger-ui/(?<path>.*), /webjars/swagger-ui/$\{path}
+
+        - id: auth-service-docs
+          uri: lb://auth-service
+          predicates:
+            - Path=/v3/api-docs/auth-service
+          filters:
+            - SetPath=/v3/api-docs
+
+
+        - id: r-service-docs
+          uri: lb://r-service
+          predicates:
+            - Path=/v3/api-docs/r-service
+          filters:
+            - SetPath=/v3/api-docs
+
+        - id: r-service
+          uri: lb://r-service
+          predicates:
+            - Path=/student/**
+          filters:
+            - AuthenticationFilter
+
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/auth/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+jwt:
+  secret-key: 534f254516806a870704060e8ab1b9e48c63c5bc0af6408f47a596129162e291
