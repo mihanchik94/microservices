@@ -15,6 +15,10 @@ spring:
     name: auth-service
   liquibase:
     change-log: db.changelog/changelogs.xml
+  datasource:
+    username: postgres
+    password: password
+    url: jdbc:postgresql://localhost:5433/user-db
 
   jpa:
     hibernate:

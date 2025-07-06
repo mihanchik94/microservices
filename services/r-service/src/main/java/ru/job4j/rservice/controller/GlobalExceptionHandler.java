@@ -45,18 +45,6 @@ public class GlobalExceptionHandler {
         return new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), exception.getMessage());
     }
 
-    @ExceptionHandler(ImageCreationException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ErrorResponse handleImageCreationException(ImageCreationException exception) {
-        return new ErrorResponse(HttpStatus.BAD_REQUEST.value(), exception.getMessage());
-    }
-
-    @ExceptionHandler(ImageFormatException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ErrorResponse handleImageFormatException(ImageFormatException exception) {
-        return new ErrorResponse(HttpStatus.BAD_REQUEST.value(), exception.getMessage());
-    }
-
     @ExceptionHandler(WebServiceException.class)
     @ResponseStatus(HttpStatus.UPGRADE_REQUIRED)
     public ErrorResponse handleWebServiceException(WebServiceException exception) {
